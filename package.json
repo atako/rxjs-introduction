@@ -1,0 +1,8 @@
+{
+  "name": "rxjs-introduction",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/atako/rxjs-introduction.git",
+  "author": "Dmitry <riumkin@gmail.com>",
+  "license": "MIT"
+}
