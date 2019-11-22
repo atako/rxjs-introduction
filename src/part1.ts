@@ -8,11 +8,26 @@ export const first = () => {
   }
 
   const observable = new Observable(subscriber => {
-    subscriber.next('Hello'),
-      subscriber.next('World'),
-      subscriber.next('hi'),
-      subscriber.complete()
+    let count = 0
+
+    const id = setInterval(() => {
+      subscriber.next(count)
+
+      count += 1
+    }, 1000)
+
+    return () => {
+      console.log('called')
+      clearInterval(id)
+    }
   })
 
-  observable.subscribe(observer)
+  const subscription = observable.subscribe(observer)
+  const subscriptionTwo = observable.subscribe(observer)
+
+  subscription.add(subscriptionTwo)
+
+  setTimeout(() => {
+    subscription.unsubscribe()
+  }, 3500)
 }
